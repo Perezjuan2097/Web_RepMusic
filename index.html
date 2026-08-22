@@ -133,15 +133,15 @@
                     <i class="fa-regular fa-bell"></i>
                 </button>
 
-                <div class="user-profile">
-                    <div class="avatar">
-                        JP
+                <button class="user-profile" id="authUserButton" type="button">
+                    <div class="avatar" id="userAvatar">
+                        ?
                     </div>
 
-                    <span>Juan</span>
+                    <span id="userName">Iniciar sesión</span>
 
                     <i class="fa-solid fa-chevron-down"></i>
-                </div>
+                </button>
 
             </div>
 
@@ -620,12 +620,97 @@
     </footer>
 
 
+
+    <!-- =========================
+         AUTHENTICATION MODAL
+    ========================== -->
+
+    <div class="auth-overlay" id="authOverlay" aria-hidden="true">
+
+        <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+
+            <button class="auth-close" id="authCloseButton" type="button" aria-label="Cerrar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <i class="fa-solid fa-circle-play"></i>
+                </div>
+
+                <h2 id="authTitle">Bienvenido a Pulse</h2>
+
+                <p id="authSubtitle">
+                    Inicia sesión para continuar.
+                </p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="loginTab" type="button">
+                    Iniciar sesión
+                </button>
+
+                <button class="auth-tab" id="registerTab" type="button">
+                    Registrarse
+                </button>
+            </div>
+
+            <form id="authForm" class="auth-form">
+
+                <div class="auth-field" id="nameField" hidden>
+                    <label for="authName">Nombre</label>
+
+                    <input
+                        type="text"
+                        id="authName"
+                        autocomplete="name"
+                        placeholder="Tu nombre">
+                </div>
+
+                <div class="auth-field">
+                    <label for="authEmail">Correo electrónico</label>
+
+                    <input
+                        type="email"
+                        id="authEmail"
+                        autocomplete="email"
+                        placeholder="correo@ejemplo.com"
+                        required>
+                </div>
+
+                <div class="auth-field">
+                    <label for="authPassword">Contraseña</label>
+
+                    <input
+                        type="password"
+                        id="authPassword"
+                        autocomplete="current-password"
+                        placeholder="••••••••"
+                        minlength="6"
+                        required>
+                </div>
+
+                <div class="auth-message" id="authMessage" role="status"></div>
+
+                <button class="auth-submit" id="authSubmit" type="submit">
+                    Iniciar sesión
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
     <!-- AUDIO -->
 
     <audio id="audioPlayer"></audio>
 
 
     <!-- JAVASCRIPT -->
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <script src="script.js"></script>
 
