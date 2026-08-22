@@ -9,7 +9,10 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
 </head>
 
 <body>
@@ -47,11 +50,13 @@
         <div class="playlist-section">
 
             <div class="playlist-header">
+
                 <span>Tus playlists</span>
 
-                <button id="addPlaylist">
+                <button id="addPlaylist" type="button">
                     <i class="fa-solid fa-plus"></i>
                 </button>
+
             </div>
 
             <div class="playlist-list">
@@ -109,38 +114,60 @@
 
             <div class="navigation-buttons">
 
-                <button id="backButton">
+                <button id="backButton" type="button">
                     <i class="fa-solid fa-chevron-left"></i>
                 </button>
 
-                <button id="forwardButton">
+                <button id="forwardButton" type="button">
                     <i class="fa-solid fa-chevron-right"></i>
                 </button>
 
             </div>
 
+
             <div class="search-box">
 
                 <i class="fa-solid fa-magnifying-glass"></i>
 
-                <input type="text" id="searchInput" placeholder="¿Qué quieres escuchar?">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="¿Qué quieres escuchar?"
+                >
 
             </div>
 
+
             <div class="user-area">
 
-                <button class="notification-button">
+                <button
+                    class="notification-button"
+                    type="button"
+                >
                     <i class="fa-regular fa-bell"></i>
                 </button>
 
-                <button class="user-profile" id="authUserButton" type="button">
-                    <div class="avatar" id="userAvatar">
+
+                <button
+                    class="user-profile"
+                    id="authUserButton"
+                    type="button"
+                    aria-label="Autenticación"
+                >
+
+                    <div
+                        class="avatar"
+                        id="userAvatar"
+                    >
                         ?
                     </div>
 
-                    <span id="userName">Iniciar sesión</span>
+                    <span id="userName">
+                        Iniciar sesión
+                    </span>
 
                     <i class="fa-solid fa-chevron-down"></i>
+
                 </button>
 
             </div>
@@ -172,12 +199,19 @@
 
                 <div class="hero-buttons">
 
-                    <button class="primary-button" id="heroPlayButton">
+                    <button
+                        class="primary-button"
+                        id="heroPlayButton"
+                        type="button"
+                    >
                         <i class="fa-solid fa-play"></i>
                         Reproducir
                     </button>
 
-                    <button class="secondary-button">
+                    <button
+                        class="secondary-button"
+                        type="button"
+                    >
                         <i class="fa-solid fa-shuffle"></i>
                         Mezclar
                     </button>
@@ -185,6 +219,7 @@
                 </div>
 
             </div>
+
 
             <div class="hero-art">
 
@@ -213,7 +248,10 @@
                     Hecho para ti
                 </h2>
 
-                <button class="show-all">
+                <button
+                    class="show-all"
+                    type="button"
+                >
                     Ver todo
                 </button>
 
@@ -222,62 +260,82 @@
 
             <div class="album-grid">
 
-                <article class="album-card" data-song="0">
+                <article
+                    class="album-card"
+                    data-song="0"
+                >
 
                     <div class="album-image image-one">
-
                         <i class="fa-solid fa-play play-overlay"></i>
-
                     </div>
 
-                    <h3>Midnight Dreams</h3>
+                    <h3>
+                        Midnight Dreams
+                    </h3>
 
-                    <p>Neon Waves</p>
+                    <p>
+                        Neon Waves
+                    </p>
 
                 </article>
 
 
-                <article class="album-card" data-song="1">
+                <article
+                    class="album-card"
+                    data-song="1"
+                >
 
                     <div class="album-image image-two">
-
                         <i class="fa-solid fa-play play-overlay"></i>
-
                     </div>
 
-                    <h3>After Hours</h3>
+                    <h3>
+                        After Hours
+                    </h3>
 
-                    <p>Night Drive</p>
+                    <p>
+                        Night Drive
+                    </p>
 
                 </article>
 
 
-                <article class="album-card" data-song="2">
+                <article
+                    class="album-card"
+                    data-song="2"
+                >
 
                     <div class="album-image image-three">
-
                         <i class="fa-solid fa-play play-overlay"></i>
-
                     </div>
 
-                    <h3>Ocean Eyes</h3>
+                    <h3>
+                        Ocean Eyes
+                    </h3>
 
-                    <p>Blue Horizon</p>
+                    <p>
+                        Blue Horizon
+                    </p>
 
                 </article>
 
 
-                <article class="album-card" data-song="3">
+                <article
+                    class="album-card"
+                    data-song="3"
+                >
 
                     <div class="album-image image-four">
-
                         <i class="fa-solid fa-play play-overlay"></i>
-
                     </div>
 
-                    <h3>City Lights</h3>
+                    <h3>
+                        City Lights
+                    </h3>
 
-                    <p>Urban Echo</p>
+                    <p>
+                        Urban Echo
+                    </p>
 
                 </article>
 
@@ -298,16 +356,25 @@
                     Escuchado recientemente
                 </h2>
 
-                <button class="show-all">
+                <button
+                    class="show-all"
+                    type="button"
+                >
                     Ver todo
                 </button>
 
             </div>
 
 
-            <div class="song-list" id="songList">
+            <div
+                class="song-list"
+                id="songList"
+            >
 
-                <div class="song-row" data-song="0">
+                <div
+                    class="song-row"
+                    data-song="0"
+                >
 
                     <span class="song-number">
                         01
@@ -316,8 +383,15 @@
                     <div class="song-cover image-one"></div>
 
                     <div class="song-info">
-                        <strong>Midnight Dreams</strong>
-                        <span>Neon Waves</span>
+
+                        <strong>
+                            Midnight Dreams
+                        </strong>
+
+                        <span>
+                            Neon Waves
+                        </span>
+
                     </div>
 
                     <span class="song-album">
@@ -328,14 +402,20 @@
                         3:42
                     </span>
 
-                    <button class="song-more">
+                    <button
+                        class="song-more"
+                        type="button"
+                    >
                         <i class="fa-solid fa-ellipsis"></i>
                     </button>
 
                 </div>
 
 
-                <div class="song-row" data-song="1">
+                <div
+                    class="song-row"
+                    data-song="1"
+                >
 
                     <span class="song-number">
                         02
@@ -344,8 +424,15 @@
                     <div class="song-cover image-two"></div>
 
                     <div class="song-info">
-                        <strong>After Hours</strong>
-                        <span>Night Drive</span>
+
+                        <strong>
+                            After Hours
+                        </strong>
+
+                        <span>
+                            Night Drive
+                        </span>
+
                     </div>
 
                     <span class="song-album">
@@ -356,14 +443,20 @@
                         4:15
                     </span>
 
-                    <button class="song-more">
+                    <button
+                        class="song-more"
+                        type="button"
+                    >
                         <i class="fa-solid fa-ellipsis"></i>
                     </button>
 
                 </div>
 
 
-                <div class="song-row" data-song="2">
+                <div
+                    class="song-row"
+                    data-song="2"
+                >
 
                     <span class="song-number">
                         03
@@ -372,8 +465,15 @@
                     <div class="song-cover image-three"></div>
 
                     <div class="song-info">
-                        <strong>Ocean Eyes</strong>
-                        <span>Blue Horizon</span>
+
+                        <strong>
+                            Ocean Eyes
+                        </strong>
+
+                        <span>
+                            Blue Horizon
+                        </span>
+
                     </div>
 
                     <span class="song-album">
@@ -384,14 +484,20 @@
                         3:58
                     </span>
 
-                    <button class="song-more">
+                    <button
+                        class="song-more"
+                        type="button"
+                    >
                         <i class="fa-solid fa-ellipsis"></i>
                     </button>
 
                 </div>
 
 
-                <div class="song-row" data-song="3">
+                <div
+                    class="song-row"
+                    data-song="3"
+                >
 
                     <span class="song-number">
                         04
@@ -400,8 +506,15 @@
                     <div class="song-cover image-four"></div>
 
                     <div class="song-info">
-                        <strong>City Lights</strong>
-                        <span>Urban Echo</span>
+
+                        <strong>
+                            City Lights
+                        </strong>
+
+                        <span>
+                            Urban Echo
+                        </span>
+
                     </div>
 
                     <span class="song-album">
@@ -412,7 +525,10 @@
                         4:02
                     </span>
 
-                    <button class="song-more">
+                    <button
+                        class="song-more"
+                        type="button"
+                    >
                         <i class="fa-solid fa-ellipsis"></i>
                     </button>
 
@@ -435,7 +551,10 @@
                     Porque escuchaste música electrónica
                 </h2>
 
-                <button class="show-all">
+                <button
+                    class="show-all"
+                    type="button"
+                >
                     Ver todo
                 </button>
 
@@ -444,68 +563,89 @@
 
             <div class="album-grid">
 
-                <article class="album-card" data-song="4">
+                <article
+                    class="album-card"
+                    data-song="4"
+                >
 
                     <div class="album-image image-five">
-
                         <i class="fa-solid fa-play play-overlay"></i>
-
                     </div>
 
-                    <h3>Digital Love</h3>
+                    <h3>
+                        Digital Love
+                    </h3>
 
-                    <p>Future State</p>
+                    <p>
+                        Future State
+                    </p>
 
                 </article>
 
 
-                <article class="album-card" data-song="5">
+                <article
+                    class="album-card"
+                    data-song="5"
+                >
 
                     <div class="album-image image-six">
-
                         <i class="fa-solid fa-play play-overlay"></i>
-
                     </div>
 
-                    <h3>Electric Soul</h3>
+                    <h3>
+                        Electric Soul
+                    </h3>
 
-                    <p>Voltage</p>
+                    <p>
+                        Voltage
+                    </p>
 
                 </article>
 
 
-                <article class="album-card" data-song="6">
+                <article
+                    class="album-card"
+                    data-song="6"
+                >
 
                     <div class="album-image image-seven">
-
                         <i class="fa-solid fa-play play-overlay"></i>
-
                     </div>
 
-                    <h3>Neon Sky</h3>
+                    <h3>
+                        Neon Sky
+                    </h3>
 
-                    <p>Solaris</p>
+                    <p>
+                        Solaris
+                    </p>
 
                 </article>
 
 
-                <article class="album-card" data-song="7">
+                <article
+                    class="album-card"
+                    data-song="7"
+                >
 
                     <div class="album-image image-eight">
-
                         <i class="fa-solid fa-play play-overlay"></i>
-
                     </div>
 
-                    <h3>Future Nights</h3>
+                    <h3>
+                        Future Nights
+                    </h3>
 
-                    <p>Digital Dreams</p>
+                    <p>
+                        Digital Dreams
+                    </p>
 
                 </article>
 
             </div>
 
         </section>
+
 
         <div class="page-spacing"></div>
 
@@ -518,11 +658,12 @@
 
     <footer class="player">
 
-        <!-- CURRENT SONG -->
-
         <div class="current-song">
 
-            <div class="player-cover image-one" id="playerCover"></div>
+            <div
+                class="player-cover image-one"
+                id="playerCover"
+            ></div>
 
             <div class="current-song-info">
 
@@ -536,36 +677,54 @@
 
             </div>
 
-            <button class="like-button" id="likeButton">
+            <button
+                class="like-button"
+                id="likeButton"
+                type="button"
+            >
                 <i class="fa-regular fa-heart"></i>
             </button>
 
         </div>
 
 
-        <!-- PLAYER CONTROLS -->
-
         <div class="player-center">
 
             <div class="player-buttons">
 
-                <button id="shuffleButton">
+                <button
+                    id="shuffleButton"
+                    type="button"
+                >
                     <i class="fa-solid fa-shuffle"></i>
                 </button>
 
-                <button id="previousButton">
+                <button
+                    id="previousButton"
+                    type="button"
+                >
                     <i class="fa-solid fa-backward-step"></i>
                 </button>
 
-                <button class="play-button" id="playButton">
+                <button
+                    class="play-button"
+                    id="playButton"
+                    type="button"
+                >
                     <i class="fa-solid fa-play"></i>
                 </button>
 
-                <button id="nextButton">
+                <button
+                    id="nextButton"
+                    type="button"
+                >
                     <i class="fa-solid fa-forward-step"></i>
                 </button>
 
-                <button id="repeatButton">
+                <button
+                    id="repeatButton"
+                    type="button"
+                >
                     <i class="fa-solid fa-repeat"></i>
                 </button>
 
@@ -578,7 +737,13 @@
                     0:00
                 </span>
 
-                <input type="range" id="progressBar" min="0" max="100" value="0">
+                <input
+                    type="range"
+                    id="progressBar"
+                    min="0"
+                    max="100"
+                    value="0"
+                >
 
                 <span id="duration">
                     0:00
@@ -589,29 +754,46 @@
         </div>
 
 
-        <!-- PLAYER RIGHT -->
-
         <div class="player-right">
 
-            <button id="queueButton">
+            <button
+                id="queueButton"
+                type="button"
+            >
                 <i class="fa-solid fa-list"></i>
             </button>
 
-            <button id="deviceButton">
+            <button
+                id="deviceButton"
+                type="button"
+            >
                 <i class="fa-solid fa-desktop"></i>
             </button>
 
             <div class="volume-control">
 
-                <button id="volumeButton">
+                <button
+                    id="volumeButton"
+                    type="button"
+                >
                     <i class="fa-solid fa-volume-high"></i>
                 </button>
 
-                <input type="range" id="volumeBar" min="0" max="1" step="0.01" value="0.8">
+                <input
+                    type="range"
+                    id="volumeBar"
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    value="0.8"
+                >
 
             </div>
 
-            <button id="fullscreenButton">
+            <button
+                id="fullscreenButton"
+                type="button"
+            >
                 <i class="fa-solid fa-expand"></i>
             </button>
 
@@ -620,66 +802,119 @@
     </footer>
 
 
-
     <!-- =========================
          AUTHENTICATION MODAL
     ========================== -->
 
-    <div class="auth-overlay" id="authOverlay" aria-hidden="true">
+    <div
+        class="auth-overlay"
+        id="authOverlay"
+        aria-hidden="true"
+    >
 
-        <div class="auth-modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+        <div
+            class="auth-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="authTitle"
+        >
 
-            <button class="auth-close" id="authCloseButton" type="button" aria-label="Cerrar">
+            <button
+                class="auth-close"
+                id="authCloseButton"
+                type="button"
+                aria-label="Cerrar"
+            >
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
+
             <div class="auth-header">
+
                 <div class="auth-logo">
                     <i class="fa-solid fa-circle-play"></i>
                 </div>
 
-                <h2 id="authTitle">Bienvenido a Pulse</h2>
+                <h2 id="authTitle">
+                    Bienvenido a Pulse
+                </h2>
 
                 <p id="authSubtitle">
                     Inicia sesión para continuar.
                 </p>
+
             </div>
 
+
             <div class="auth-tabs">
-                <button class="auth-tab active" id="loginTab" type="button">
+
+                <button
+                    class="auth-tab active"
+                    id="loginTab"
+                    type="button"
+                >
                     Iniciar sesión
                 </button>
 
-                <button class="auth-tab" id="registerTab" type="button">
+                <button
+                    class="auth-tab"
+                    id="registerTab"
+                    type="button"
+                >
                     Registrarse
                 </button>
+
             </div>
 
-            <form id="authForm" class="auth-form">
 
-                <div class="auth-field" id="nameField" hidden>
-                    <label for="authName">Nombre</label>
+            <form
+                id="authForm"
+                class="auth-form"
+                novalidate
+            >
+
+                <div
+                    class="auth-field"
+                    id="nameField"
+                    hidden
+                >
+
+                    <label for="authName">
+                        Nombre
+                    </label>
 
                     <input
                         type="text"
                         id="authName"
                         autocomplete="name"
-                        placeholder="Tu nombre">
+                        placeholder="Tu nombre"
+                    >
+
                 </div>
 
+
                 <div class="auth-field">
-                    <label for="authEmail">Correo electrónico</label>
+
+                    <label for="authEmail">
+                        Correo electrónico
+                    </label>
 
                     <input
                         type="email"
                         id="authEmail"
                         autocomplete="email"
                         placeholder="correo@ejemplo.com"
-                        required>
+                        required
+                    >
+
                 </div>
 
+
                 <div class="auth-field">
-                    <label for="authPassword">Contraseña</label>
+
+                    <label for="authPassword">
+                        Contraseña
+                    </label>
 
                     <input
                         type="password"
@@ -687,12 +922,25 @@
                         autocomplete="current-password"
                         placeholder="••••••••"
                         minlength="6"
-                        required>
+                        required
+                    >
+
                 </div>
 
-                <div class="auth-message" id="authMessage" role="status"></div>
 
-                <button class="auth-submit" id="authSubmit" type="submit">
+                <div
+                    class="auth-message"
+                    id="authMessage"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+
+                <button
+                    class="auth-submit"
+                    id="authSubmit"
+                    type="submit"
+                >
                     Iniciar sesión
                 </button>
 
@@ -702,15 +950,21 @@
 
     </div>
 
-    <!-- AUDIO -->
+
+    <!-- =========================
+         AUDIO
+    ========================== -->
 
     <audio id="audioPlayer"></audio>
 
 
-    <!-- JAVASCRIPT -->
+    <!-- =========================
+         SCRIPTS
+    ========================== -->
 
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
 
     <script src="script.js"></script>
 
