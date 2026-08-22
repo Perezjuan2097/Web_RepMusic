@@ -1,3 +1,323 @@
+
+/* =========================
+   SUPABASE AUTHENTICATION
+========================= */
+
+/*
+ * IMPORTANTE:
+ * Reemplaza estos dos valores con los datos de tu proyecto Supabase.
+ *
+ * Supabase Dashboard:
+ * Project Settings -> API
+ *
+ * Usa:
+ * - Project URL
+ * - Publishable key (o anon key si tu proyecto todavía la muestra con ese nombre)
+ *
+ * NUNCA pongas aquí una service_role/secret key.
+ */
+
+const SUPABASE_URL = "https://yxkxdoorhagqexjqotpy.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_gaaezxjzPmXbLZskqBzWLA_AJmcp6zV";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+);
+
+const authOverlay = document.getElementById("authOverlay");
+const authCloseButton = document.getElementById("authCloseButton");
+const authUserButton = document.getElementById("authUserButton");
+const authForm = document.getElementById("authForm");
+const authTitle = document.getElementById("authTitle");
+const authSubtitle = document.getElementById("authSubtitle");
+const authSubmit = document.getElementById("authSubmit");
+const authMessage = document.getElementById("authMessage");
+const loginTab = document.getElementById("loginTab");
+const registerTab = document.getElementById("registerTab");
+const nameField = document.getElementById("nameField");
+const authName = document.getElementById("authName");
+const authEmail = document.getElementById("authEmail");
+const authPassword = document.getElementById("authPassword");
+const userName = document.getElementById("userName");
+const userAvatar = document.getElementById("userAvatar");
+
+let authMode = "login";
+
+function openAuthModal(mode = "login") {
+    setAuthMode(mode);
+
+    authOverlay.classList.add("open");
+    authOverlay.setAttribute("aria-hidden", "false");
+    document.body.classList.add("auth-open");
+
+    setTimeout(() => authEmail.focus(), 50);
+}
+
+function closeAuthModal() {
+    authOverlay.classList.remove("open");
+    authOverlay.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("auth-open");
+
+    authMessage.textContent = "";
+    authMessage.className = "auth-message";
+}
+
+function setAuthMode(mode) {
+    authMode = mode;
+
+    const isRegister = mode === "register";
+
+    loginTab.classList.toggle("active", !isRegister);
+    registerTab.classList.toggle("active", isRegister);
+
+    nameField.hidden = !isRegister;
+    authName.required = isRegister;
+
+    authTitle.textContent = isRegister
+        ? "Crea tu cuenta"
+        : "Bienvenido a Pulse";
+
+    authSubtitle.textContent = isRegister
+        ? "Regístrate para guardar tu cuenta en Pulse."
+        : "Inicia sesión para continuar.";
+
+    authSubmit.textContent = isRegister
+        ? "Crear cuenta"
+        : "Iniciar sesión";
+
+    authPassword.autocomplete =
+        isRegister ? "new-password" : "current-password";
+
+    authMessage.textContent = "";
+    authMessage.className = "auth-message";
+}
+
+function showAuthMessage(message, type = "") {
+    authMessage.textContent = message;
+    authMessage.className = `auth-message ${type}`.trim();
+}
+
+function getUserDisplayName(user) {
+    return (
+        user?.user_metadata?.full_name ||
+        user?.user_metadata?.name ||
+        user?.email?.split("@")[0] ||
+        "Usuario"
+    );
+}
+
+function updateUserInterface(user) {
+    if (user) {
+        const displayName = getUserDisplayName(user);
+        const initial = displayName.charAt(0).toUpperCase();
+
+        userName.textContent = displayName;
+        userAvatar.textContent = initial;
+        authUserButton.title = "Cerrar sesión";
+    } else {
+        userName.textContent = "Iniciar sesión";
+        userAvatar.textContent = "?";
+        authUserButton.title = "Iniciar sesión";
+    }
+}
+
+async function handleAuthUserButton() {
+    const { data, error } = await supabaseClient.auth.getUser();
+
+    if (error) {
+        console.error("No se pudo consultar la sesión:", error);
+        openAuthModal("login");
+        return;
+    }
+
+    if (data.user) {
+        const shouldLogout = confirm(
+            `¿Quieres cerrar sesión de ${getUserDisplayName(data.user)}?`
+        );
+
+        if (!shouldLogout) {
+            return;
+        }
+
+        const { error: logoutError } =
+            await supabaseClient.auth.signOut();
+
+        if (logoutError) {
+            alert("No se pudo cerrar sesión: " + logoutError.message);
+            return;
+        }
+
+        updateUserInterface(null);
+        alert("Sesión cerrada correctamente.");
+    } else {
+        openAuthModal("login");
+    }
+}
+
+authUserButton.addEventListener(
+    "click",
+    handleAuthUserButton
+);
+
+authCloseButton.addEventListener(
+    "click",
+    closeAuthModal
+);
+
+loginTab.addEventListener(
+    "click",
+    () => setAuthMode("login")
+);
+
+registerTab.addEventListener(
+    "click",
+    () => setAuthMode("register")
+);
+
+authOverlay.addEventListener(
+    "click",
+    event => {
+        if (event.target === authOverlay) {
+            closeAuthModal();
+        }
+    }
+);
+
+document.addEventListener(
+    "keydown",
+    event => {
+        if (
+            event.key === "Escape" &&
+            authOverlay.classList.contains("open")
+        ) {
+            closeAuthModal();
+        }
+    }
+);
+
+authForm.addEventListener(
+    "submit",
+    async event => {
+        event.preventDefault();
+
+        const email = authEmail.value.trim();
+        const password = authPassword.value;
+        const name = authName.value.trim();
+
+        if (!email || !password) {
+            showAuthMessage(
+                "Completa el correo y la contraseña.",
+                "error"
+            );
+            return;
+        }
+
+        authSubmit.disabled = true;
+        showAuthMessage("Procesando...");
+
+        try {
+            if (authMode === "register") {
+                const { data, error } =
+                    await supabaseClient.auth.signUp({
+                        email,
+                        password,
+                        options: {
+                            data: {
+                                full_name: name
+                            }
+                        }
+                    });
+
+                if (error) {
+                    throw error;
+                }
+
+                /*
+                 * Si Supabase tiene activada la confirmación por correo,
+                 * el usuario recibirá un correo antes de poder iniciar sesión.
+                 */
+                if (data.session) {
+                    showAuthMessage(
+                        "Cuenta creada. Ya puedes usar Pulse.",
+                        "success"
+                    );
+
+                    authForm.reset();
+
+                    setTimeout(() => {
+                        closeAuthModal();
+                    }, 1200);
+                } else {
+                    showAuthMessage(
+                        "Cuenta creada. Revisa tu correo para confirmar la cuenta.",
+                        "success"
+                    );
+
+                    authForm.reset();
+                }
+            } else {
+                const { error } =
+                    await supabaseClient.auth.signInWithPassword({
+                        email,
+                        password
+                    });
+
+                if (error) {
+                    throw error;
+                }
+
+                showAuthMessage(
+                    "Inicio de sesión correcto.",
+                    "success"
+                );
+
+                authForm.reset();
+
+                setTimeout(() => {
+                    closeAuthModal();
+                }, 600);
+            }
+        } catch (error) {
+            console.error("Error de autenticación:", error);
+
+            showAuthMessage(
+                error.message || "Ocurrió un error.",
+                "error"
+            );
+        } finally {
+            authSubmit.disabled = false;
+        }
+    }
+);
+
+async function initializeAuth() {
+    /*
+     * getSession() recupera la sesión guardada por Supabase
+     * cuando el usuario vuelve a abrir la página.
+     */
+    const { data, error } =
+        await supabaseClient.auth.getSession();
+
+    if (error) {
+        console.error(
+            "No se pudo recuperar la sesión:",
+            error
+        );
+    }
+
+    updateUserInterface(data?.session?.user || null);
+
+    supabaseClient.auth.onAuthStateChange(
+        (_event, session) => {
+            updateUserInterface(session?.user || null);
+        }
+    );
+}
+
+initializeAuth();
+
+
 /* =========================
    MUSIC DATABASE
 ========================= */
