@@ -17,8 +17,8 @@
  * NUNCA pongas aquí una service_role/secret key.
  */
 
-const SUPABASE_URL = "https://yxkxdoorhagqexjqotpy.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_gaaezxjzPmXbLZskqBzWLA_AJmcp6zV";
+const SUPABASE_URL = "https://ozqutpvqmjqyymprasfv.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_Al5XXbyr_LHtBy4qFkClkg_tuDvVZOU";
 
 const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
