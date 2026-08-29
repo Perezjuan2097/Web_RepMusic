@@ -9,10 +9,10 @@
 ========================================================= */
 
 const SUPABASE_URL =
-    "https://yxkxdoorhagqexjqotpy.supabase.co";
+    "https://ozqutpvqmjqyymprasfv.supabase.co";
 
 const SUPABASE_ANON_KEY =
-    "sb_publishable_gaaezxjzPmXbLZskqBzWLA_AJmcp6zV";
+    "sb_publishable_Al5XXbyr_LHtBy4qFkClkg_tuDvVZOU";
 
 
 const GITHUB_PAGES_URL =
